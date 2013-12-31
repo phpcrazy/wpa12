@@ -1,0 +1,11 @@
+{
+	"autoload": {
+		"classmap": [
+			"src/loaders",
+			"app/controllers"
+		],
+		"files": [
+			"src/helpers/helpers.php"
+		]
+	}
+}
