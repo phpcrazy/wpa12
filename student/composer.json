@@ -2,7 +2,8 @@
 	"autoload": {
 		"classmap": [
 			"src/loaders",
-			"app/controllers"
+			"app/controllers",
+			"app/models"
 		],
 		"files": [
 			"src/helpers/helpers.php"
