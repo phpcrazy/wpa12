@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Config' => $baseDir . '/src/loaders/ConfigLoader.php',
+    'HTML' => $baseDir . '/src/loaders/HtmlLoader.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'Student' => $baseDir . '/app/models/Student.php',
     'View' => $baseDir . '/src/loaders/ViewLoader.php',

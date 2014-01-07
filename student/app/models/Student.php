@@ -13,17 +13,27 @@ class Student {
 
 	public static function get($id) {
 		$students = static::dataCombine();
-		if(array_key_exists($id, $students)) {
-			$result = array();
-		 	foreach($students as $student) {
- 				if($student['id'] == $id) {
- 					$result = $student;
-		 		}
- 			}
- 			return $result;
-		} else {
-			return null;
+		$result = array();
+		foreach($students as $student) {
+ 			if($student['id'] == $id) {
+ 				$result = $student;
+		 	}
+ 		}
+ 		if(count($result) < 1) {
+			return null; 			
+ 		} 
+ 		return $result;
+	}
+
+	public static function getClass($page){
+		$students=static::dataCombine();
+		$result=array();
+		foreach($students as $student){
+			if($student['class']==$page){
+				$result[]=$student;
+			}
 		}
+		return $result;		
 	}
 }
 
