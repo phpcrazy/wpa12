@@ -20,9 +20,9 @@
 						<a class="brand" href="#">SIS</a>
 						<ul class="nav">
 							<li><a href="<?php echo base_url(); ?>">Home</a></li>
-							<li><a href="<?php echo base_url(); ?>/index.php?page=all-students">All Students</a></li>
-							<li><a href="<?php echo base_url(); ?>/index.php?page=php-foundation">PHP Foundation</a></li>
-							<li><a href="<?php echo base_url(); ?>/index.php?page=php-advanced">PHP Advanced</a></li>
+							<li><a href="<?php echo base_url(); ?>/all-students">All Students</a></li>
+							<li><a href="<?php echo base_url(); ?>/php-foundation">PHP Foundation</a></li>
+							<li><a href="<?php echo base_url(); ?>/php-advanced">PHP Advanced</a></li>
 						</ul>
 					</div>
 				</div>

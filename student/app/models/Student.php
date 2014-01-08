@@ -26,8 +26,8 @@ class Student {
 	}
 
 	public static function getClass($page){
-		$students=static::dataCombine();
-		$result=array();
+		$students = static::dataCombine();
+		$result = array();
 		foreach($students as $student){
 			if($student['class']==$page){
 				$result[]=$student;

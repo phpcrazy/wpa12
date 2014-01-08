@@ -16,7 +16,7 @@
 							<td><?php echo $student['id']; ?></td>
 							<td><?php echo $student['name']; ?></td>
 							<td><?php echo $student['address']; ?></td>
-							<td><a href="<?php echo 'http://wpa12.local/index.php?page=detail&id=' . $student[
+							<td><a href="<?php echo base_url() . '/detail/' . $student[
 							'id']; ?>">Detail</a></td>
 						</tr>	
 					<?php } ?>

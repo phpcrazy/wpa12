@@ -5,6 +5,7 @@ class HTML {
 		$file = DD . '/public/' . $css;
 		if(file_exists($file)) {
 			$output = '<link rel="stylesheet" href="';
+			$output .= base_url() . '/';
 			$output .= $css;
 			$output .= '">';
 			return $output . "\n";
