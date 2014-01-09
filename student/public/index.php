@@ -19,7 +19,7 @@ $request_uri = explode('/', $request_uri);
 $script_name = explode('/', $script_name);
 $script_request = array_diff($request_uri, $script_name);
 if(empty($script_request)) {
-	$result = array(0 => '');
+	$result = array( 0 => '' );
 } else {
 	$result = array_values($script_request);
 }
@@ -54,9 +54,6 @@ switch($result[0]) {
 	default:
 		View::make('404', $data);
 }
-
-
-
 
 /*
 // Get request 
