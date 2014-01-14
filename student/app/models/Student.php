@@ -1,6 +1,30 @@
 <?php 
 
 class Student {
+	private $data = array();
+
+	public function __construct() {
+		$sql = "SELECT students.id, students.name, 
+					students.address, classes.name 
+				FROM students, classes
+				WHERE students.class_id = classes.id";
+
+		try {
+			$conn = new PDO('mysql:host=' 
+				. Config::database('mysql.hostname')
+				. ';dbname=' . Config::database('mysql.dbname'), 
+				Config::database('mysql.username'), 
+				Config::database('mysql.password'));	
+		} catch (PDOException $e) {
+			trigger_error('Something wrong with database connection!', 
+				E_USER_ERROR);
+		}
+		
+		$query = $conn->query($sql);
+		$this->data = $query->fetchAll();
+
+		var_dump($this->data);
+	}
 	public static function all() {
 		return static::dataCombine();
 	}

@@ -3,13 +3,17 @@
 define('DD', __DIR__ . '/../'); 
 require DD . '/vendor/autoload.php';
 
+echo "Hello!";
+$student = new Student();
+die();
+
 /* $sitetitle = Config::get('site_title');
 echo $sitetitle . "<br />";
 $foobar = Config::get('foo.bar.moo');
 echo $foobar;*/
 
 
-$data['site_title']	= Config::get('site_title');
+// $data['site_title']	= Config::get('site_title');
 
 // URI Request
 
@@ -18,6 +22,7 @@ $script_name = $_SERVER['SCRIPT_NAME'];
 $request_uri = explode('/', $request_uri);
 $script_name = explode('/', $script_name);
 $script_request = array_diff($request_uri, $script_name);
+
 if(empty($script_request)) {
 	$result = array( 0 => '' );
 } else {
@@ -35,7 +40,7 @@ switch($result[0]) {
 			View::make('detail', $data);
 			break;	
 		} else {
-			View::make('404', $data);
+			View::make('404');
 			break;
 		}
 	case "php-foundation":
@@ -49,13 +54,15 @@ switch($result[0]) {
 		View::make('all-students',$data);
 		break;
 	case "":
-		View::make('home', $data);
+		View::make('home');
 		break;
 	default:
-		View::make('404', $data);
+		View::make('404');
 }
 
+
 /*
+
 // Get request 
 
 $page = isset($_GET['page']) ? $_GET['page'] : '';
@@ -81,7 +88,7 @@ switch($page) {
 		View::make('all-students',$data);
 		break;
 	case "":
-		View::make('home', $data);
+		View::make('home');
 		break;
 	default:
 		View::make('404', $data);

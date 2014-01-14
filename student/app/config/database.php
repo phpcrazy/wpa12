@@ -3,7 +3,10 @@
 return array(
 	'mysql'	=> array(
 		'hostname'	=> 'localhost',
-		'dbname'	=> 'wpa12'
+		'username'	=> 'root',
+		'password'	=> 'mmlinks',
+		'dbname'	=> 'studentinfosystem'
 		)
+	);
 
  ?>
