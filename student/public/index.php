@@ -3,10 +3,6 @@
 define('DD', __DIR__ . '/../'); 
 require DD . '/vendor/autoload.php';
 
-echo "Hello!";
-$student = new Student();
-die();
-
 /* $sitetitle = Config::get('site_title');
 echo $sitetitle . "<br />";
 $foobar = Config::get('foo.bar.moo');
