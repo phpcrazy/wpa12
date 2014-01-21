@@ -7,6 +7,7 @@
 						<th>ID#</th>
 						<th>Name</th>
 						<th>Address</th>
+						<th>Class Name</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -16,6 +17,7 @@
 							<td><?php echo $student['id']; ?></td>
 							<td><?php echo $student['name']; ?></td>
 							<td><?php echo $student['address']; ?></td>
+							<td><?php echo $student['class_name']; ?></td>
 							<td><a href="<?php echo base_url() . '/detail/' . $student[
 							'id']; ?>">Detail</a></td>
 						</tr>	

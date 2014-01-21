@@ -32,7 +32,12 @@ switch($result[0]) {
 		break; 
 	case "detail":
 		if(isset($result[1])) {
-			$data['students'] = Student::get($result[1]);
+			$result = $result[1];
+			$data['students'] = Student::get($result);
+			if($data['students'] != null) {
+				$data['scripts'] = Student::getInterests($result, 'script');
+				$data['languages'] = Student::getInterests($result, 'language');
+			}
 			View::make('detail', $data);
 			break;	
 		} else {

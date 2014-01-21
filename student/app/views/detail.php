@@ -17,21 +17,21 @@
  				</tr>
  				<tr>
  					<td>Class</td>
- 					<td><?php echo $students['class']; ?></td>
+ 					<td><?php echo $students['class_name']; ?></td>
  				</tr>
  				<tr>
  					<td>Interest - Script</td>
  					<td>
- 						<?php foreach($students['interest']['script'] as $script) : ?>
- 							<?php echo $script . ', '; ?>
+ 						<?php foreach($scripts as $script) : ?>
+ 							<?php echo $script['name'] . ', '; ?>
  						<?php endforeach; ?>
  					</td>
  					</tr>
  					<tr>
  						<td>Interest - Language</td>
  						<td>
- 							<?php foreach($students['interest']['language'] as $language) : ?>
- 							<?php echo $language . ', '; ?>
+ 							<?php foreach($languages as $language) : ?>
+ 							<?php echo $language['name'] . ', '; ?>
  						<?php endforeach; ?>
  						</td>
  						</tr>
