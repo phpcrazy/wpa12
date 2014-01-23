@@ -16,6 +16,26 @@ class Student {
 		return $conn;
 	}
 
+	public static function search($q) {
+		$sql = "SELECT students.id, 
+			students.name, 
+			students.address, 
+			classes.name AS class_name
+			FROM students, classes
+			WHERE students.class_id = classes.id AND 
+			students.name LIKE :search_word OR
+			classes.name LIKE :search_word OR
+			students.address LIKE :search_word
+			GROUP BY students.id";
+
+		$conn = static::getConn();
+		$stmt = $conn->prepare($sql);
+		$stmt->bindValue(':search_word',  $q . '%' );
+		$stmt->execute();
+		$students = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $students;
+	}
+
 	private static function getData() {
 		$sql = "SELECT students.id, 
 			students.name, 
@@ -30,15 +50,17 @@ class Student {
 		return $students;		
 	}
 
-	public static function getInterests($student_id, $interest_name) {
+	public static function getInterests($student_id, $interest_type) {
 		$sql = "SELECT interests.name
 			FROM students_interests, interests
 			WHERE students_interests.interest_id = interests.id
-			AND students_interests.student_id = ? 
-			AND interests.type = ?";
+			AND students_interests.student_id = :student_id 
+			AND interests.type = :interest_type";
 		$conn = static::getConn();
 		$stmt = $conn->prepare($sql);
-		$stmt->execute(array($student_id, $interest_name));
+		$stmt->bindValue(':student_id', $student_id);
+		$stmt->bindValue(':interest_type', $interest_type);
+		$stmt->execute();
 		$interests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		$stmt->closeCursor();
 		return $interests;

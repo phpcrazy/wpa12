@@ -12,7 +12,16 @@ echo $foobar;*/
 // $data['site_title']	= Config::get('site_title');
 
 // URI Request
-
+if(isset($_GET['q'])) :
+	$q = htmlspecialchars($_GET['q']);
+	$data['students'] = Student::search($q);
+	if(empty($data['students'])) {
+		View::make('not-found');
+	} else {
+		View::make('all-students', $data);
+	}
+	die();
+endif;
 $request_uri = htmlspecialchars($_SERVER['REQUEST_URI']);
 $script_name = $_SERVER['SCRIPT_NAME'];
 $request_uri = explode('/', $request_uri);
@@ -32,11 +41,11 @@ switch($result[0]) {
 		break; 
 	case "detail":
 		if(isset($result[1])) {
-			$result = $result[1];
-			$data['students'] = Student::get($result);
+			$id = $result[1];
+			$data['students'] = Student::get($id);
 			if($data['students'] != null) {
-				$data['scripts'] = Student::getInterests($result, 'script');
-				$data['languages'] = Student::getInterests($result, 'language');
+				$data['scripts'] = Student::getInterests($id, 'script');
+				$data['languages'] = Student::getInterests($id, 'language');
 			}
 			View::make('detail', $data);
 			break;	
