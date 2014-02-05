@@ -1,0 +1,17 @@
+{
+	 "require": {
+        "symfony/http-foundation": "2.3.*@dev",
+        "symfony/routing": "2.5.*@dev",
+        "symfony/http-kernel": "2.5.*@dev"
+    },
+    "autoload": {
+		"classmap": [
+			"src/loaders",
+			"app/controllers",
+			"app/models"
+		],
+		"files": [
+			"src/helpers/helpers.php"
+		]
+	}
+}

@@ -1,0 +1,28 @@
+students
+========
+id 
+name
+address
+class_id
+
+classes
+=====
+id - 1
+name - PHP Foundation
+
+students/interests
+==================
+student_id
+interest_id
+
+interests
+========
+id - 1
+type  - script
+name - PHP
+
+1 | Aung Aung | Hledan | 3
+
+1 | PHP Foundation
+2 | PHP Advanced
+3 | Web Professional Advanced
