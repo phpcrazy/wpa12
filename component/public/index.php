@@ -10,32 +10,42 @@ use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
+use Symfony\Component\HttpKernel;
 
 $request = Request::createFromGlobals();
 
 // Route Rules Creation
 $routes = new RouteCollection();
-$routes->add('hello', new Route('/hello/{name}', 
+
+$routes->add('home', new Route('/', 
 	array(
-		'_controller' => 'HelloController',
-		'name' => 'World'
-		)));
-$routes->add('bye', new Route('/bye'));
-$routes->add('home', new Route('/'));
+		'_controller' => 'StudentController::actionHome'
+		)
+	)
+);
+
+$routes->add('allstudents', new Route('/all-students',
+	array(
+		'_controller'	=> 'StudentController::allstudents'
+		)
+	)
+);
 
 // Request filtering
 $context = new RequestContext();
 $context->fromRequest($request);
+
+$resolver = new HttpKernel\Controller\ControllerResolver();
 
 // prepare UrlMatcher 
 $matcher = new UrlMatcher($routes, $context);
 
 // Url Matching
 try {
-	$attributes = $matcher->match($request->getPathInfo());
-	extract($attributes, EXTR_SKIP);
-	$homeController = new HomeController;
-	$get_response = call_user_func_array(array($homeController, 'actionHome'), array('name' => $name));
+	$request->attributes->add($matcher->match($request->getPathInfo()));
+	$controller = $resolver->getController($request);
+	$arguments = $resolver->getArguments($request, $controller);	
+	$get_response = call_user_func_array($controller, $arguments);
 	$response = new Response($get_response, 200);
 } catch (Routing\Exception\ResourceNotFoundException $e) {
 	$response = new Response('Not Found', 404);
