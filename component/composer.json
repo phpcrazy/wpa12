@@ -5,6 +5,9 @@
         "symfony/http-kernel": "2.5.*@dev"
     },
     "autoload": {
+    	"psr-0": {
+    		"Wpa12\\": "src/src/"
+    		},
 		"classmap": [
 			"src/loaders",
 			"app/controllers",
