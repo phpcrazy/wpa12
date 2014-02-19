@@ -3,8 +3,12 @@
   <head>
   	<meta charset="UTF-8">
   	<title><?php echo site_title(); ?></title>
-  	<?php echo HTML::style('css/bootstrap.css'); ?>
+  	<?php echo HTML::style('css/bootstrap.min.css'); ?>
+    <?php echo HTML::style('css/datepicker.css'); ?>
   	<?php echo HTML::style('css/style.css'); ?>
+    <?php echo HTML::script('js/jquery-1.11.0.min.js'); ?>
+    <?php echo HTML::script('js/bootstrap-datepicker.js'); ?>
+    <?php echo HTML::script('js/student.js'); ?>
   </head>
   <body>
   	<div class="container">

@@ -6,11 +6,15 @@
 	height: 50px;
 }
 
+#body {
+	align: center;
+}
+
 #search_box {
 	position: relative;
 }
 
-#search-form {
+#search_box #search-form {
 	position: absolute;
 	right: 0;
 	top: 30px;

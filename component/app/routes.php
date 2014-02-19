@@ -26,5 +26,13 @@ $routes->add('login', new Route('/login',
 	)
 );
 
+$routes->add('add-student', new Route('/add-student',
+	array(
+		'_controller'	=> 'StudentController::addStudent',
+		'request'	=> ''
+		)
+	)
+);
+
 return $routes;
  ?>

@@ -16,7 +16,6 @@ class Application {
 		$this->request = Request::createFromGlobals();
 		$this->context = new RequestContext();
 	}
-
 	public function run() {
 		$this->context->fromRequest($this->request);
 		$resolver = new HttpKernel\Controller\ControllerResolver();
@@ -27,7 +26,10 @@ class Application {
 
 		// Url Matching
 		try {
+			var_dump($this->request);
 			$this->request->attributes->add($matcher->match($this->request->getPathInfo()));
+			var_dump($this->request);
+			$this->request->attributes->add(array('request' => $this->request));
 			$controller = $resolver->getController($this->request);
 			$arguments = $resolver->getArguments($this->request, $controller);	
 			$get_response = call_user_func_array($controller, $arguments);
