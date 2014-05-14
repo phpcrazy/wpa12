@@ -34,5 +34,13 @@ $routes->add('add-student', new Route('/add-student',
 	)
 );
 
+$routes->add('db-test', new Route('/db-test',
+	array(
+		'_controller'	=> 'DBController::actionIndex'
+
+		)
+	)
+);
+
 return $routes;
  ?>

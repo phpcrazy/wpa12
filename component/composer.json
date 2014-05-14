@@ -2,7 +2,9 @@
 	 "require": {
         "symfony/http-foundation": "2.5.*@dev",
         "symfony/routing": "2.5.*@dev",
-        "symfony/http-kernel": "2.5.*@dev"
+        "symfony/http-kernel": "2.5.*@dev",
+        "illuminate/database": "4.1.*@dev",
+        "philo/laravel-blade": "dev-master"
     },
     "autoload": {
     	"psr-0": {

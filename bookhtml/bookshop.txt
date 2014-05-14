@@ -1,0 +1,19 @@
+# Frontend 
+ : Home Page  -> All
+ : Register Page ->  Ma May Zin  
+ : customer login page -> Ko Nay Zaw
+ : Customer Profile Page { order history } -> yethusoe  
+ : Product List By category -> Ma Khay Mar
+ : Product Detail Page -> Ma Yu
+
+# Backend
+ : login form   -> Ma Ei Phyu
+ : dashboard [ last order / best sell ]  ->  yethusoe
+ : Add Product  -> Ma Sandi
+ : Admin product list [ Edit ] -> Ko Aung Lin Tun
+ : Customers List [ with history ] -> Ma YiMon
+ : Order list -> Ma ThinZar
+ 
+ // : Admin Permission Control ->
+
+ 

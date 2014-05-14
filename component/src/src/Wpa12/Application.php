@@ -7,6 +7,9 @@ use Symfony\Component\Routing;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\HttpKernel;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container;
 
 class Application {
 	private $request;
@@ -16,6 +19,7 @@ class Application {
 		$this->request = Request::createFromGlobals();
 		$this->context = new RequestContext();
 	}
+
 	public function run() {
 		$this->context->fromRequest($this->request);
 		$resolver = new HttpKernel\Controller\ControllerResolver();
@@ -26,9 +30,7 @@ class Application {
 
 		// Url Matching
 		try {
-			var_dump($this->request);
 			$this->request->attributes->add($matcher->match($this->request->getPathInfo()));
-			var_dump($this->request);
 			$this->request->attributes->add(array('request' => $this->request));
 			$controller = $resolver->getController($this->request);
 			$arguments = $resolver->getArguments($this->request, $controller);	
@@ -40,6 +42,17 @@ class Application {
 			$response = new Response('An error occured!', 500);
 		}
 		$response->send();
+	}
+
+	public function databaseLoader() {
+		$capsule = new Capsule;
+
+		$database_config = require DD . '/app/config/eloquent.php';
+		$capsule->addConnection($database_config);
+		
+		$capsule->setEventDispatcher(new Dispatcher(new Container));
+		$capsule->setAsGlobal();
+		$capsule->bootEloquent();
 	}
 }
 
